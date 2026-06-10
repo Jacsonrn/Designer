@@ -21,7 +21,8 @@ public:
     width(W)
   {}
 
-  /* ACRESCENTAR */
+  /* Feito pelo aluno em 09 de junho de 2026 */
+  virtual pShape clone() const = 0;
 
   // Leh uma forma generica de uma stream.
   // Leh a cor da forma e a largura do contorno.
