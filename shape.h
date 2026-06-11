@@ -65,21 +65,76 @@ private:
 };
 
 /// Classe que representa linhas
-/* ACRESCENTAR */
+/* Feito pelo aluno em 10 de junho de 2026 */
+class Line: public Shape {
+public:
+    Line(int R=0, int G=0, int B=0, double W=1.0, double X1=0.0, double Y1=0.0, double X2=0.0, double Y2=0.0) : Shape(R, G, B, W), x1(X1), y1(Y1), x2(X2), y2(Y2) {}
+    pShape clone() const override { return new Line(*this); }
+    void read(std::istream& X) override;
+    void save(std::ostream& X) const override;
+private:
+    double x1, y1, x2, y2;
+};
 
 /// Classe que representa circulos
-/* ACRESCENTAR */
+/* /* Feito pelo aluno em 10 de junho de 2026 */ 
+class Circle: public FilledShape {
+public:
+    Circle(int R=0, int G=0, int B=0, double W=1.0, bool F=true, double XC=0.0, double YC=0.0, double RC=0.0) : FilledShape(R, G, B, W, F), xc(XC), yc(YC), rc(RC) {}
+    pShape clone() const override { return new Circle(*this); }
+    void read(std::istream& X) override;
+    void save(std::ostream& X) const override;
+private:
+    double xc, yc, rc;
+};
 
 /// Classe que representa estrelas
-/* ACRESCENTAR */
+/* Feito pelo aluno em 10 de junho de 2026 */
+class Star: public FilledShape {
+public:
+    Star(int R=0, int G=0, int B=0, double W=1.0, bool F=true, double XC=0.0, double YC=0.0, double RC=0.0) : FilledShape(R, G, B, W, F), xc(XC), yc(YC), rc(RC) {}
+    pShape clone() const override { return new Star(*this); }
+    void read(std::istream& X) override;
+    void save(std::ostream& X) const override;
+private:
+    double xc, yc, rc;
+};
+
 
 /// Classe que representa retangulos
-/* ACRESCENTAR */
+/* /* Feito pelo aluno em 10 de junho de 2026 */
+class Rectangle: public FilledShape {
+public:
+    Rectangle(int R=0, int G=0, int B=0, double W=1.0, bool F=true, double XMin=0.0, double XMax=0.0, double YMin=0.0, double YMax=0.0) : FilledShape(R, G, B, W, F), xmin(XMin), xmax(XMax), ymin(YMin), ymax(YMax) {}
+    pShape clone() const override { return new Rectangle(*this); }
+    void read(std::istream& X) override;
+    void save(std::ostream& X) const override;
+private:
+    double xmin, xmax, ymin, ymax;
+};
 
 /// Classe que representa losangos
-/* ACRESCENTAR */
+/* Feito pelo aluno em 10 de junho de 2026 */
+class Rombo: public FilledShape {
+public:
+    Rombo(int R=0, int G=0, int B=0, double W=1.0, bool F=true, double XMin=0.0, double XMax=0.0, double YMin=0.0, double YMax=0.0) : FilledShape(R, G, B, W, F), xmin(XMin), xmax(XMax), ymin(YMin), ymax(YMax) {}
+    pShape clone() const override { return new Rombo(*this); }
+    void read(std::istream& X) override;
+    void save(std::ostream& X) const override;
+private:
+    double xmin, xmax, ymin, ymax;
+};
 
 /// Classe que representa triangulos
-/* ACRESCENTAR */
+/* Feito pelo aluno em 10 de junho de 2026 */
+class Triangle: public FilledShape {
+public:
+    Triangle(int R=0, int G=0, int B=0, double W=1.0, bool F=true, double X1=0.0, double Y1=0.0, double X2=0.0, double Y2=0.0, double X3=0.0, double Y3=0.0) : FilledShape(R, G, B, W, F), x1(X1), y1(Y1), x2(X2), y2(Y2), x3(X3), y3(Y3) {}
+    pShape clone() const override { return new Triangle(*this); }
+    void read(std::istream& X) override;
+    void save(std::ostream& X) const override;
+private:
+    double x1, y1, x2, y2, x3, y3;
+};
 
 #endif // _SHAPE_H_
