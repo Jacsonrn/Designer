@@ -16,10 +16,19 @@ Designer::Designer(double Width, double Height):
 {}
 
 /// Construtor por copia
-/* ACRESCENTAR */
+/* Feito pelo aluno em 09 de junho de 2026 */
+Designer::Designer(const Designer& D) : width(D.width), height(D.height) {
+    for (auto S : D.VS) {
+        if (S) VS.push_back(S->clone());
+    }
+}
 
 /// Construtor por movimento
-/* ACRESCENTAR */
+/*  Feito pelo aluno em 09 de junho de 2026  */
+Designer::Designer(Designer&& D) noexcept : width(D.width), height(D.height), VS(move(D.VS)) {
+    D.width = 0.0;
+    D.height = 0.0;
+}
 
 /// Atribuicao por copia
 Designer& Designer::operator=(const Designer& D)
@@ -27,7 +36,13 @@ Designer& Designer::operator=(const Designer& D)
   // Teste de autoatribuicao
   if (this==&D) return *this;
 
-  /* ACRESCENTAR */
+  /*  Feito pelo aluno em 09 de junho de 2026  */
+  clear(); 
+    width = D.width;
+    height = D.height;
+    for (auto S : D.VS) {
+        if (S) VS.push_back(S->clone());
+    }
   return *this;
 }
 
@@ -37,7 +52,13 @@ Designer& Designer::operator=(Designer&& D) noexcept
   // Teste de autoatribuicao
   if (this==&D) return *this;
 
-  /* ACRESCENTAR */
+  /*  Feito pelo aluno em 10 de junho de 2026  */
+  clear();
+    width = D.width;
+    height = D.height;
+    VS = move(D.VS);
+    D.width = 0.0;
+    D.height = 0.0;
   return *this;
 }
 
@@ -45,7 +66,9 @@ Designer& Designer::operator=(Designer&& D) noexcept
 void Designer::clear() noexcept
 {
   width = height = 0.0;
-  /* ACRESCENTAR */
+  /*  Feito pelo aluno em 10 de junho de 2026 */
+  for (auto S : VS) delete S; // Libera a memória de cada ponteiro
+    VS.clear();                 // Esvazia o vetor
 }
 
 /// Inclusao de nova forma no desenho
