@@ -74,7 +74,8 @@ void Designer::clear() noexcept
 /// Inclusao de nova forma no desenho
 void Designer::include(const Shape& S)
 {
-  /* ACRESCENTAR */
+  /* Feito pelo aluno em 12 de junho de 2026 */
+  VS.push_back(S.clone());
 }
 
 /// Leitura de arquivo com as formas
@@ -117,12 +118,34 @@ void Designer::read(const string& fileName)
     // Cria dinamicamente (aloca) a nova forma de acordo com o caractere tipo_forma.
     // Se o caractere nao for nenhum dos identificadores de formas,
     // ignora o restante da linha do arquivo
-    /* ACRESCENTAR */
+    /* Feito pelo aluno em 12 de junho de 2026 */
+    Shape* nova_forma = nullptr;
+  switch(tipo_forma) {
+    case 'L': nova_forma = new Line(); break;
+    case 'C': nova_forma = new Circle(); break;
+    case 'R': nova_forma = new Rectangle(); break;
+    case 'T': nova_forma = new Triangle(); break;
+    case 'O': nova_forma = new Rombo(); break;
+    case 'S': nova_forma = new Star(); break;
+    default:
+        string ignorar;
+        getline(arq, ignorar);
+        break;
+}
 
     // Se a nova forma foi alocada (caractere corresponde a uma das formas):
     // - Leh a forma do arquivo (em um try para capturar as excecoes na leitura)
     // - Acrescenta a forma no vetor de formas do Designer temporario (prov)
-    /* ACRESCENTAR */
+    /* Feito pelo aluno em 12 de junho de 2026 */
+    if (nova_forma != nullptr) {
+    try {
+        nova_forma->read(arq);
+        prov.VS.push_back(nova_forma);
+    } catch (...) {
+        delete nova_forma;
+        throw;
+    }
+}
   }
   while(!arquivo_acabou);
 
