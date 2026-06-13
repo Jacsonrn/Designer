@@ -121,11 +121,11 @@ void Designer::read(const string& fileName)
     /* Feito pelo aluno em 12 de junho de 2026 */
     Shape* nova_forma = nullptr;
   switch(tipo_forma) {
-    case 'L': nova_forma = new Line(); break;
+    case 'I': nova_forma = new Line(); break; // Verifique qual letra o professor exige para Linha
     case 'C': nova_forma = new Circle(); break;
     case 'R': nova_forma = new Rectangle(); break;
     case 'T': nova_forma = new Triangle(); break;
-    case 'O': nova_forma = new Rombo(); break;
+    case 'L': nova_forma = new Rombo(); break; // L representa o Losango
     case 'S': nova_forma = new Star(); break;
     default:
         string ignorar;
